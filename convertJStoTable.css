@@ -1,0 +1,64 @@
+/* css for the code table */
+#rawjs{
+	height: 200px;
+	width:600px;
+}
+#tbl{
+	
+}
+.row{
+	border: 1px solid blue; 
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: :0px;;
+}
+.numbcell{
+	background-color: #355DB2;
+	color: white;
+	text-align: right;
+	font-family: "Helvetica Neue", Helvetica, Arial, Verdana;
+}
+.cell{
+	padding:0px;
+	background-color: #FFF6A6;
+}
+.cellp{
+	line-height: 110%;
+	color: #05007E;
+	padding: 0px;
+	margin-top:0px;
+	margin-bottom: 0px;
+	font-family: Courier, "Courier New";
+}
+.comment{
+	color: gray;
+}
+/* End of program table css */
+
+/* For this page only */
+h1,h2,h3{
+	font-family: "Helvetica Neue", Helvetica, Arial, Verdana, Sans Serif;
+	color: #14657E;
+}
+p, .instructions{
+	font-family: "Helvetica Neue", Helvetica, Arial, Verdana, Sans Serif;
+	color: #14657E;
+}
+
+.class{
+	font-family: "Helvetica Neue", Helvetica, Arial, Verdana, Sans Serif;
+	color: #white;
+	background-color:#24057D
+}
+.instructions{
+	font-size: 12px;
+}
+.butn{
+	background-color: #190456;
+	color: white;
+	font-size: 14pt;
+}
+.showcode{
+	font-size:10px;
+	font-family: Courier, "Courier New", mono;
+}

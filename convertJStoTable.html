@@ -7,7 +7,7 @@
 	<link type="text/css" rel="stylesheet" href="convertJStoTable.css">
 	 <script type="text/javascript" src="includes/jquery-1.10.2.min.js"></script>
 		 <script type="text/javascript" src="convertJStoTable.js"></script>
-
+	<link rel="icon" type="image/ico" href="favicon.ico"/>
 <script language="javascript" type="text/javascript">
 
 $(document).ready(function(){    
@@ -19,20 +19,41 @@ $(document).ready(function(){
 </head>
 <body>
 <h1>Convert Javascript to a table</h1>
-<p class="instructions">Suppose you're writing an HTML page about Javascript. You have examples you want to refer to. So, paste the code into the big open box and press the button. You will be shown what the HTML table version of your code looks like. Right below that is a single long line of HTML you can copy. Paste it into your HTML document and you'll have a neatly displayed table, with numbers for all the lines that are non-blank.</p>
-
-<p class="instructions">Plus, there'll be a button that lets your readers show or hide the numbers so that they can more easily copy the code you're displaying</p>
+<p class="instructions">Suppose you're writing an HTML page about Javascript. You have examples you want to refer to. So, paste the code into the big open box and press the button. You will be shown what the HTML table version of your code looks like. Right below that is a single long line of HTML you can copy. Paste it into your HTML document and you'll have a neatly displayed table, with numbers for all the lines that are non-blank. Plus, it creates be a button that lets your readers show or hide the numbers so that they can more easily copy the code you're displaying<./p>
 
 <p class="instructions">It converts all sets of four spaces into tabs.</p>
 
-<p class="instructions">This a total hack job by a non-professional.  Please enjoy. - David Weinberger, self@evident.com, June 29, 2014</p>
+<p class="instructions">This a total hack job by a non-professional.  Please enjoy. [<a href="/Users/weinbergerd/Dropbox/programming/convertJStoTable/README.md">github</a>] - David Weinberger, self@evident.com, July 5, 2014</p>
 
 
 <textarea id="rawjs"></textarea><br />
 <input type="button" class="butn" value="convert" onclick="convertJS()">
+<input type="button" class="samplebutn" value="Load demo" onclick="loadDemo()">
+<div id="demotext" style="display: none">function selectText(element) {
+	// select the text
+    // thank you: http://stackoverflow.com/questions/18611992/selected-text-inside-div
+    var doc = document
+        , text = doc.getElementById(element)
+        , range, selection
+    ;
+    
+    if (doc.body.createTextRange) { //ms
+        range = doc.body.createTextRange();
+        range.moveToElementText(text);
+        range.select();
+        
+    } else if (window.getSelection) { //all others
+        selection = window.getSelection();        
+        range = doc.createRange();
+        range.selectNodeContents(text);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+};
+</div>
 <div><p>&nbsp;</p></div>
 <div id="resultsdiv"></div>
-<div id="copyinstruction" style="display:none"><p>Copy and paste the row below (the one that begins "&lt;table class...&gt;). It's the HTML code that made the table above:</p></div>
+<div id="copyinstruction" style="display:none"><p>Copy and paste the text below, pre-selected for your convenience. It's the HTML code that makes the table above:</p></div>
 <div id="prediv"></div>
 </body>
 </html>

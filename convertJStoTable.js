@@ -86,6 +86,9 @@ function convertJS(){
 		var leftmarg = (indents * 30) + "px";
 		$(p).css("margin-left", leftmarg);
 		var lineOfCode = sarray[i];
+		lineOfCode = lineOfCode.replace(/\&/g, '&amp;');
+		lineOfCode = lineOfCode.replace(/\</g, '&lt;');
+    	lineOfCode = lineOfCode.replace(/\>/g, '&gt;');
 		// markup the comments
 		var commentbegins = lineOfCode.indexOf("//");
 		if (commentbegins > -1){
@@ -110,14 +113,43 @@ function convertJS(){
 	but.setAttribute("onclick","$('.numbcell').toggle(300)");
 	resultsdiv.appendChild(but);
    
-   	// display it as pre
+   	// display it by turning markup into html entities
    	$("#copyinstruction").show(300); // show the copy instructions
    	var resultshtml = $(resultsdiv).html();
+   //	resultshtml = "&lt;pre&gt;" + resultshtml + "&lt;/pre&gt;";
    	resultshtml = resultshtml.replace(/\&/g, '&amp;');
 	resultshtml = resultshtml.replace(/\</g, '&lt;');
     resultshtml = resultshtml.replace(/\>/g, '&gt;');
-   	resultshtml = "<pre>" + resultshtml + "</pre>";
-   	
+    
+		var x = "<span>test</span>";
+ 	// add a style section
+ 	var style= "&lt;style&gt;.row{border: 1px solid blue; padding: 0px;margin-top: 0px;margin-bottom: :0px;;}.numbcell{background-color: #355DB2;color: white;text-align: right;font-family: 'Helvetica Neue', Helvetica, Arial, Verdana;}.cell{padding:0px;background-color: #FFF6A6;}.cellp{line-height: 110%;color: #05007E;padding: 0px;margin-top:0px;margin-bottom: 0px;font-family: Courier, 'Courier New';}.comment{color:#8CCFDC;}&lt;/style&gt;";
+ 	
+ 	resultshtml = style + resultshtml;
   
    $("#prediv").html(resultshtml);
+   
+    // select the text
+    // thank you: http://stackoverflow.com/questions/18611992/selected-text-inside-div
+    var doc = document
+        , text = document.getElementById("prediv")
+        , range, selection
+    ;    
+    if (doc.body.createTextRange) { //ms
+        range = doc.body.createTextRange();
+        range.moveToElementText(text);
+        range.select();
+    } else if (window.getSelection) { //all others
+        selection = window.getSelection();        
+        range = doc.createRange();
+        range.selectNodeContents(text);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+}
+
+function loadDemo(){
+	// get demo text
+	var demo = $("#demotext").text();
+	$("#rawjs").val(demo);
 }

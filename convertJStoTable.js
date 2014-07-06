@@ -1,3 +1,11 @@
+/* Convert Javascript to a numbered, embeddable HTML table
+  David Weinberger
+  self@evident.com
+  
+  Purely amateur effort.
+  Available under open license at Github: 
+  https://github.com/dweinberger/convertJStoTable
+*/
 
 function init(){
 // get textarea to accept tab key
@@ -50,7 +58,7 @@ function convertJS(){
 
 	// get the code to convert
 	var js = $("#rawjs").val();
-	var sarray = js.split("\n");
+	var sarray = js.split("\n"); // turn into an array of lines
 
 	// build the table displaying the code
 	var ctr = 1;

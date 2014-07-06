@@ -118,14 +118,23 @@ function convertJS(){
 	var but = document.createElement("input");
 	but.setAttribute("type","button");
 	but.setAttribute("value","Toggle line numbers");
-	but.setAttribute("onclick","$('.numbcell').toggle(300)");
+	
+	/*<div id="tablediv" border=1><table><tbody><tr><td class="numbcell">1</td><td>TEDT</td></tr>
+    <tr><td class="numbcell">2</td><td>TEadsfafasdfasdfasfasdfasdfDT</td></tr></tbody></table><input type="button" value="A" onclick="$(this).parent().find('.numbcell').toggle()"</div>
+    */
+	
+	
+	but.setAttribute("onclick","$(this).parent().find('.numbcell').toggle(300)");
 	resultsdiv.appendChild(but);
    
    	// display it by turning markup into html entities
    	$("#copyinstruction").show(300); // show the copy instructions
    	var resultshtml = $(resultsdiv).html();
-   //	resultshtml = "&lt;pre&gt;" + resultshtml + "&lt;/pre&gt;";
-   	resultshtml = resultshtml.replace(/\&/g, '&amp;');
+   	// wrap it in a div so we can find the numbcells to toggle
+   	resultshtml = "<div>" + resultshtml + "</div>";
+   	// preface it with jquery load statment
+   	resultshtml = "<script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>" + resultshtml; 
+    resultshtml = resultshtml.replace(/\&/g, '&amp;');
 	resultshtml = resultshtml.replace(/\</g, '&lt;');
     resultshtml = resultshtml.replace(/\>/g, '&gt;');
     

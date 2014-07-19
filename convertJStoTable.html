@@ -8,8 +8,12 @@
 	 <script type="text/javascript" src="includes/jquery-1.10.2.min.js"></script>
 		 <script type="text/javascript" src="convertJStoTable.js"></script>
 	<link rel="icon" type="image/ico" href="favicon.ico"/>
-<script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript"></script>
+<script  type="text/javascript" src='includes/bgrins-spectrum/spectrum.js'></script>
 
+<link rel='stylesheet' href='includes/bgrins-spectrum/spectrum.css' />
+
+<script>
 $(document).ready(function(){    
  init();
     
@@ -21,11 +25,36 @@ $(document).ready(function(){
 <h1>Convert Javascript to a table</h1>
 <p class="instructions">Suppose you're writing an HTML page about Javascript. You have examples you want to refer to. So, paste the code into the big open box and press the button. You will be shown what the HTML table version of your code looks like. Right below that is a block of HTML you can copy. Paste it into your HTML document and you'll have a neatly displayed table, with numbers for all the lines that are non-blank. Plus, it creates be a button that lets your readers show or hide the numbers so that they can more easily copy the code you're displaying</p>
 
-<p class="instructions">It converts all sets of four spaces into tabs.</p>
+<p class="instructions">It converts all sets of four spaces into tabs. And it uses cookies to remember your color choices across sessions.</p>
 
 <p class="instructions">This a total hack job by a non-professional.  Please enjoy. [<a href="https://github.com/dweinberger/convertJStoTable">github</a>] - David Weinberger, self@evident.com, July 5, 2014 (update: July 7, 2014)</p>
 
+<!-- COLOR PICKER   --->
+<p id="showhide" style="text-decoration: underline; font-size:12px;" onclick="$('#colorpicker').toggle(300)">Show/Hide color options</p>
+<div id="colorpicker">
+	<div id="widget">
+	<input type='text' id="colorpickinput" />
+	</div>
+	<div id="radios">
+	<form id="colorradio">
+	<p>&nbsp;</p>
+	<input type="radio" name="colors" value="coderowbkgrd"  checked="checked">Code background <br />
+	<input type="radio" name="colors" value="coderowfont">Code font color <br />
+	<input type="radio" name="colors" value="numberbkgrd" >Numbers background <br />
+	<input type="radio" name="colors" value="numberfont">Numbers font color<br /> 
+	<input type="radio" name="colors" value="comments">Comments 
+	</form>
+	<input type="button" name="restoredefaults" value="Restore defaults" onclick="restoreDefaultColors()">
+	</div>
+	<div id="demorow">
+	<table class="codetable" style="width:100%">
+	<tr class="row"><td class="numbcell">01</td><td class="cell"><p class="cellp" style="margin-left: 0px;">var s = "sample of some code"; <span class="comment">// Just a sample</span></p></td></tr>
+	</table>
+	</div>
+	<p>&nbsp;</p>
+</div>
 
+<!-- ENTER CODE -->
 <textarea id="rawjs"></textarea><br />
 <input type="button" class="butn" value="convert" onclick="convertJS()">
 <input type="button" class="samplebutn" value="Load demo" onclick="loadDemo()">

@@ -316,6 +316,7 @@ function convertJS(){
 	
 	
 	but.setAttribute("onclick","$(this).parent().parent().find('.numbcell').toggle(300)");
+	// ?? this works too: onclick="$(this).parent().prev().find('.numbcell').toggle(300);" type="button">
 	resultsdiv.appendChild(but);
    
    	// display it by turning markup into html entities

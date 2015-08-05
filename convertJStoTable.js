@@ -315,7 +315,7 @@ function convertJS(){
 	but.setAttribute("value","Toggle line numbers");
 	
 	
-	but.setAttribute("onclick","$(this).parent().find('.numbcell').toggle(300)");
+	but.setAttribute("onclick","$(this).parent().parent().find('.numbcell').toggle(300)");
 	resultsdiv.appendChild(but);
    
    	// display it by turning markup into html entities
